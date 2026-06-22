@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cadastro"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">
+      RESPONSÁVEL
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="centro">
+    <img class="image2" src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="/>
+  </div>
+  <p class="texto">
+    FAÇA SEU CADASTRO
+  </p>
+      <div class="centro" style="padding: 16px;">
+    <ion-col size="12">
+      <ion-input 
+        [(ngModel)]="nome"
+        placeholder="Nome completo" 
+        label="NOME" 
+        fill="outline" 
+        labelPlacement="floating"
+        maxlength="50">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-input 
+        [(ngModel)]="email1"
+        placeholder="Seu email" 
+        type="email" 
+        fill="outline" 
+        label="EMAIL 1" 
+        labelPlacement="floating">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-input 
+        [(ngModel)]="email2"
+        placeholder="Confirme o email" 
+        type="email" 
+        fill="outline" 
+        label="EMAIL 2" 
+        labelPlacement="floating">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-input 
+        [(ngModel)]="senha"
+        label="SENHA" 
+        labelPlacement="floating" 
+        type="password" 
+        placeholder="Senha" 
+        fill="outline"
+        maxlength="50">
+      </ion-input>
+    </ion-col>
+
+    <ion-button  class="button3" expand="block" (click)="cadastrar()">CADASTRAR</ion-button>
+</div>
+</ion-content>

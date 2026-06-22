@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title">
+      ÁREA MÉDICA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="ion-padding page-content">
+ 
+  <!-- Seção Superior: Botões Informativos (Mantidos do seu design original) -->
+  <div class="info-buttons">
+    <ion-button expand="block" class="btn-warning" (click)="goTo('/alerta')">
+      <ion-icon name="warning-outline" slot="start"></ion-icon>
+      Sinais de Alerta
+    </ion-button>
+   
+    <ion-button expand="block" class="btn-symbols" (click)="goTo('/simbolos')">
+      <ion-icon name="grid-outline" slot="start"></ion-icon>
+      Símbolos
+    </ion-button>
+   
+    <ion-button expand="block" class="btn-rights" (click)="goTo('/direitos')">
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+       Direitos
+    </ion-button>
+   
+    <ion-button expand="block" class="btn-what-is" (click)="goTo('/sobre')">
+      <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+      Sobre
+    </ion-button>
+  </div>
+
+  <div class="spacer"></div>
+
+
+  <div class="pacientes-section">
+    <h2 class="ion-text-center ion-margin-bottom">Meus Pacientes</h2>
+    <ion-button expand="block" (click)="adicionarPaciente()" class="ion-margin-bottom btn-add">
+      <ion-icon name="person-add-outline" slot="start"></ion-icon>
+      Vincular Novo Paciente
+    </ion-button>
+
+    <div *ngIf="isLoading" class="ion-text-center ion-padding">
+        <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <ion-list *ngIf="!isLoading && pacientes.length > 0">
+      <ion-item *ngFor="let paciente of pacientes" lines="full" detail="false">
+        
+        <ion-avatar slot="start">
+           <div class="avatar-placeholder">{{ getInitials(paciente.nome_completo) }}</div>
+        </ion-avatar>
+
+        <ion-label>
+          <h2>{{ paciente.nome_completo }}</h2>
+          <p>Nasc: {{ paciente.data_nascimento | date:'dd/MM/yyyy' }}</p>
+          <p style="font-size: 0.8em; color: gray;">{{ paciente.informacoes_adicionais }}</p>
+        </ion-label>
+
+        <ion-buttons slot="end">
+          <ion-button (click)="verFicha(paciente.id)" color="tertiary">
+            <ion-icon name="document-text-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+          <ion-button (click)="verGraficos(paciente.id)" color="success">
+            <ion-icon name="analytics-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="!isLoading && pacientes.length === 0" class="ion-text-center ion-padding empty-state">
+      <ion-icon name="people-outline" style="font-size: 48px; color: #ccc;"></ion-icon>
+      <p>Nenhum paciente vinculado.</p>
+      <p style="font-size: 0.8em; color: #888;">Peça o código de acesso ao responsável para começar.</p>
+    </div>
+
+  </div>
+
+</ion-content>

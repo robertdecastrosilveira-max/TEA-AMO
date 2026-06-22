@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title">
+     TELA PROFESSOR
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="ion-padding page-content">
+ 
+  <!-- Seção de Informações Gerais (Inalterada) -->
+  <div class="info-buttons">
+    <ion-button expand="block" class="btn-what-is" (click)="goTo('/sobre')">
+      <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+      O que é
+    </ion-button>
+
+    <ion-button expand="block" class="btn-warning" (click)="goTo('/alerta')">
+      <ion-icon name="warning-outline" slot="start"></ion-icon>
+      Sinais de Alerta
+    </ion-button>
+
+    <ion-button expand="block" class="btn-symbols" (click)="goTo('/simbolos')">
+      <ion-icon name="grid-outline" slot="start"></ion-icon>
+      Símbolos
+    </ion-button>
+
+    <ion-button expand="block" class="btn-rights" (click)="goTo('/direitos')">
+      <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
+      Direitos
+    </ion-button>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Seção Dinâmica: Meus Alunos -->
+  <h2 class="ion-text-center ion-margin-bottom">Meus Alunos</h2>
+
+  <!-- Botão para Vincular Novo Aluno -->
+  <ion-button expand="block" (click)="adicionarAluno()" class="ion-margin-bottom">
+    <ion-icon name="person-add-outline" slot="start"></ion-icon>
+    Vincular Novo Aluno
+  </ion-button>
+
+  <!-- Lista de Alunos Vinculados -->
+  <ion-list *ngIf="alunos.length > 0">
+    <ion-item *ngFor="let aluno of alunos">
+      <ion-label>
+        <h2>{{ aluno.nome_completo }}</h2>
+      </ion-label>
+      
+      <ion-buttons slot="end">
+        <!-- Botão de Questionário Escolar -->
+        <ion-button (click)="responderQuestionarioEscola(aluno.id)">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <!-- Botão para Ver Ficha -->
+        <ion-button (click)="verFicha(aluno.id)">
+          <ion-icon name="document-text-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensagem se a lista estiver vazia -->
+  <div *ngIf="alunos.length === 0" class="ion-text-center ion-padding">
+    <p>Nenhum aluno vinculado ainda.</p>
+  </div>
+
+</ion-content>

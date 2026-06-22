@@ -1,0 +1,98 @@
+/* Fundo da página */
+.page-content {
+  --background: #f0f4f8;
+}
+.toolbar{       /*Usado para definir a cor da barra superior*/
+    --background: #0094FF;
+    --color: white;
+}
+
+/* Sombra no cabeçalho */
+ion-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+
+/* Estilo geral dos botões */
+ion-button {
+  height: 52px;
+  --border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-transform: none;
+  margin-bottom: 16px;
+  --padding-start: 16px;
+}
+
+
+/* Ícones */
+ion-button ion-icon {
+  font-size: 1.4rem;
+  margin-right: 10px;
+}
+
+
+/* Botões coloridos */
+.btn-what-is {
+  --background: linear-gradient(135deg, #ffc0cb, #fba4b0);
+  --color: #5d0c1d;
+}
+
+
+.btn-warning {
+  --background: linear-gradient(135deg, #fff9c4, #fde97e);
+  --color: #614d00;
+}
+
+
+.btn-symbols {
+  --background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+  --color: #1b5e20;
+}
+
+
+.btn-rights {
+  --background: linear-gradient(135deg, #b3e5fc, #81d4fa);
+  --color: #01579b;
+}
+
+
+/* Botões de perfil */
+.btn-profile {
+  --background: #ffffff;
+  --color: var(--ion-color-primary);
+}
+
+
+.btn-profile ion-icon {
+  color: var(--ion-color-primary-shade);
+}
+
+
+/* Espaço entre as seções */
+.spacer {
+  height: 30px;
+}
+/* Centralizar os botões na tela */
+.info-buttons,
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza verticalmente */
+  align-items: center;      /* centraliza horizontalmente */
+}
+
+
+/* Deixa os botões com largura mais bonita no centro */
+.info-buttons ion-button,
+.profile-buttons ion-button {
+  width: 80%;
+  max-width: 350px;
+}

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="light" style="background-color: #b3e5fc; color: #000;">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title">TEA´AMO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" class="button1" (click)="navigateTo('sobre')">Sobre</ion-button>
+  <ion-button expand="block" class="button2" (click)="navigateTo('simbolos')">Símbolos</ion-button>
+  <ion-button expand="block" class="button3" (click)="navigateTo('alerta')">Sinais de Alerta</ion-button>
+  <ion-button expand="block" class="button4" (click)="navigateTo('direitos')">Direitos</ion-button>
+
+  <div class="ribbon-container">
+    <img class="img" src="assets\img\logotea.png" alt="logo tea" />
+  </div>
+  <ion-button expand="block" class="button5" (click)="navigateTo('desenvolvedores')">Desenvolvedores</ion-button>
+</ion-content>

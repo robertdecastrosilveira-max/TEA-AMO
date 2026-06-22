@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar2">
+    <ion-buttons slot="start">
+      <div *ngIf="!bloqueado">
+        <ion-back-button defaultHref="/ficha-pessoal"></ion-back-button>
+      </div>
+    </ion-buttons>
+    <ion-title class="title">
+      QUESTIONÁRIO
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="isLoading" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p>A verificar estado...</p>
+  </div>
+
+  <!-- Bloqueio das 24 h -->
+  <div *ngIf="!isLoading && bloqueado" class="ion-text-center ion-padding">
+    <ion-icon name="time-outline" color="warning" style="font-size: 64px;"></ion-icon>
+    <h2>Aguarde!</h2>
+    <p>{{ mensagemBloqueio }}</p>
+    <ion-button expand="block" (click)="voltar()" class="ion-margin-top">Voltar</ion-button>
+  </div>
+
+  <!-- Questionário Liberado -->
+  <div *ngIf="!isLoading && !bloqueado">
+    <h4 class="texto">Responda com base no dia de hoje.</h4>
+    
+    <ion-list>
+      <ion-item *ngFor="let pergunta of perguntas">
+        <ion-label class="ion-text-wrap">{{ pergunta.texto_pergunta }}</ion-label>
+        <ion-toggle [(ngModel)]="pergunta.resposta" slot="end"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <ion-button class="button" expand="block" class="ion-margin-top" (click)="enviarRespostas()" [disabled]="perguntas.length === 0">
+      Enviar
+    </ion-button>
+  </div>
+
+</ion-content>

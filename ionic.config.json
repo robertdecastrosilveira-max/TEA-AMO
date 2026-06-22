@@ -1,0 +1,7 @@
+{
+  "name": "TEA_Finalizado",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

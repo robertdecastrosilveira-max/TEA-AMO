@@ -1,0 +1,41 @@
+.toolbar { --background: #0094FF; --color: white; }
+.toolbar2 { --background: #027ed6; --color: white; }
+
+.grafico-container {
+    margin-bottom: 10px;
+}
+
+/* Estilo da área do médico */
+.card-input-medico {
+    border: 1px solid var(--ion-color-primary);
+    box-shadow: 0 4px 10px rgba(0, 148, 255, 0.15);
+}
+
+/* Estilo do histórico */
+.item-obs {
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 10px;
+    --background: #fff;
+}
+
+.nome-prof {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.data-obs {
+    font-size: 0.85em;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.texto-obs {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid var(--ion-color-secondary);
+}

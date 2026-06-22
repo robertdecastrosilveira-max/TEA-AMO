@@ -1,0 +1,24 @@
+.toolbar{       /*Usado para definir a cor da barra superior*/
+    --background: #0094FF;
+    --color: white;
+}
+.button4{
+    --border-color: #E0E0E0;
+    width: 387px;
+    height:50px;
+    color: #898989;
+}
+.texto4 {
+  padding-top: 30%;
+  text-align: center;
+  color: #8A8A8A;
+  margin-bottom: 20px;
+}
+.centralizado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+}

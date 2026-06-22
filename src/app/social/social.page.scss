@@ -1,0 +1,21 @@
+ion-content {
+    --background: #ffffff; /* Cor de fundo do cabeçalho */
+    --color: #92abff; /* Cor do texto no cabeçalho */
+      --background:  #7fa3d3; /* Cor de fundo personalizada (azul claro) */
+  }
+
+  ion-toolbar {
+    --background: #ffffff; /* Cor de fundo do cabeçalho */
+    --color: #7492f7; /* Cor do texto no cabeçalho */
+  }
+  .padding{
+    padding-top: 5%;
+  }
+  h3{
+    font-weight: bold;
+    color:  #92abff; /* Altera a cor do título */
+  }
+  p{
+    text-align: center;
+    font-size: 30px;
+  }

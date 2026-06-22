@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/responsavel-home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">
+      NOVA FICHA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form (ngSubmit)="salvar()">
+    <ion-row>
+      
+      <ion-col size="12">
+        <ion-label position="floating">Nome Completo</ion-label>
+        <ion-input placeholder="Nome" fill="outline"  type="text" [(ngModel)]="ficha.nome_completo" name="nome_completo" required></ion-input>
+      </ion-col>
+
+        <ion-col size="12">
+        <ion-label position="floating">Data de Nascimento</ion-label>
+        <ion-datetime
+          class="padding"
+          presentation="date"
+          displayFormat="DD/MM/YYYY" 
+          pickerFormat="DD MMM YYYY"
+          (ionChange)="setDataNascimento($event)"
+          name="data_nascimento" required>
+        </ion-datetime>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label position="floating">Gênero (Opcional)</ion-label>
+        <ion-input placeholder="Gênero" fill="outline" type="text" [(ngModel)]="ficha.genero" name="genero"></ion-input>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label position="floating">Grau de Parentesco (Ex: Filho, Pai, Irmão)</ion-label>
+        <ion-input placeholder="Parentesco" fill="outline" type="text" [(ngModel)]="ficha.grau_parentesco" name="grau_parentesco" required></ion-input>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label position="floating">Informações Adicionais (Alergias, etc)</ion-label>
+        <ion-textarea placeholder="Adicionais" fill="outline" rows="4" [(ngModel)]="ficha.informacoes_adicionais" name="informacoes_adicionais"></ion-textarea>
+      </ion-col>
+      </ion-row>
+    <ion-button type="submit" class="button3" expand="block" [disabled]="!ficha.nome_completo || !ficha.data_nascimento || !ficha.grau_parentesco">
+      Salvar Cadastro
+    </ion-button>
+  </form>
+</ion-content>

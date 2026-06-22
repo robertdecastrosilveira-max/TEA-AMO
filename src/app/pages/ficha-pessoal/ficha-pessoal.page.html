@@ -1,0 +1,100 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">
+      FICHA PESSOAL
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="usuarioLogado?.tipo === 'responsavel'">
+      <ion-button *ngIf="!modoEdicao" (click)="ativarModoEdicao()">Editar</ion-button>
+      <ion-button *ngIf="modoEdicao" (click)="salvarAlteracoes()">Salvar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Spinner de Carregamento -->
+  <div *ngIf="isLoading" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <ion-card *ngIf="assistido && !isLoading">
+      <ion-item lines="none">
+          <ion-avatar slot="start" class="avatar-initials">
+              <span class="initials-text">
+                  {{ getInitials(assistido.nome_completo) }}
+              </span>
+          </ion-avatar>
+          <ion-label>
+              <h2>{{ assistido.nome_completo }}</h2>
+              
+              <p *ngIf="usuarioLogado?.tipo === 'responsavel'">
+                  Parentesco: {{ assistido.grau_parentesco }}
+              </p>
+          </ion-label>
+      </ion-item>
+
+      <ion-item lines="none" *ngIf="usuarioLogado?.tipo === 'responsavel'" class="ion-margin-top">
+          <ion-icon name="key-outline" slot="start" color="primary"></ion-icon>
+          <ion-label>
+              <h3>Código de Vinculação</h3>
+              <p style="font-weight: bold; font-size: 1.2em;">
+                  {{ assistido.codigo_acesso }}
+              </p>
+          </ion-label>
+      </ion-item>
+  </ion-card>
+
+  <!-- Lista de Características -->
+  <ion-list *ngIf="ficha.length > 0 && !isLoading">
+    <ion-item *ngFor="let item of ficha">
+      <ion-label class="ion-text-wrap">{{ item.texto_caracteristica }}</ion-label>
+      
+      <!-- O [ngSwitch] lê o 'tipo_resposta' que veio do banco -->
+      <div [ngSwitch]="item.tipo_resposta" slot="end">
+        
+        <!-- Caso 1: Se for 'SimNao', mostra um Toggle -->
+        <ion-toggle *ngSwitchCase="'SimNao'" 
+                    [(ngModel)]="item.valor_resposta_bool" 
+                    [disabled]="!modoEdicao">
+        </ion-toggle>
+
+        <!-- Caso 2: Se for 'Numero', mostra um campo de número -->
+        <ion-input *ngSwitchCase="'Numero'" 
+                   type="number" 
+                   [(ngModel)]="item.valor_resposta" 
+                   [readonly]="!modoEdicao" 
+                   class="input-pequeno">
+        </ion-input>
+
+        <!-- Caso 3: Se for 'TextoCurto', mostra um campo de texto -->
+        <ion-input *ngSwitchCase="'TextoCurto'" 
+                   type="text" 
+                   [(ngModel)]="item.valor_resposta" 
+                   [readonly]="!modoEdicao">
+        </ion-input>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <!-- Seção dos Botões de Ação-->
+  <div *ngIf="!isLoading && !modoEdicao" class="ion-padding">
+    <ion-button *ngIf="usuarioLogado?.tipo === 'responsavel'" class="button3" (click)="irParaQuestionarioDiario()" expand="block">
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      Monitoramento Diário
+    </ion-button>
+    
+    <ion-button *ngIf="usuarioLogado?.tipo === 'responsavel'" (click)="irParaGraficoProcedimento()" expand="block" fill="outline">
+      <ion-icon name="analytics-outline" slot="start"></ion-icon>
+      Gráfico de Procedimento
+    </ion-button>
+  </div>
+  
+  <!-- Botão de Cancelar Edição -->
+  <ion-button *ngIf="modoEdicao" (click)="cancelarEdicao()" expand="block" fill="clear" color="danger">
+    Cancelar
+  </ion-button>
+
+</ion-content>

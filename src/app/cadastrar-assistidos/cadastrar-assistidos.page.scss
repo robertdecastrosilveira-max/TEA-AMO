@@ -1,0 +1,14 @@
+.toolbar{       /*Usado para definir a cor da barra superior*/
+    --background: #0094FF;
+    --color: white;
+}
+.padding{
+    padding-top: 16px;
+}
+.button3{ //Botão de CADASTRAR das abas de cadastro e o botao de ENTRAR das abas de login
+    height: auto;
+    color: #898989;
+    text-align: center;
+    --background: #D9EBFC;
+    padding-top: 10px;
+}

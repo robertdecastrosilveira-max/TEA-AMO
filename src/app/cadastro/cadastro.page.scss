@@ -1,0 +1,29 @@
+.toolbar{       /*Usado para definir a cor da barra superior*/
+    --background: #0094FF;
+    --color: white;
+}
+.content{       /*classe para colocar qualquer conteudo no centro do app*/
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+    align-items: center;
+}
+.button2{       /*botões da 2 tela */
+    color: #898989;
+    --background: #D9EBFC;
+    max-width: 1000px;
+    padding:7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 68px;
+    }
+    .texto1{         /*classe do texto */
+    text-align:center;
+    margin: auto;
+    color:#8A8A8A;
+    padding: 20px;
+}
+.image1{        /*imagem */
+    width: 50%;
+    align-items: center;
+}

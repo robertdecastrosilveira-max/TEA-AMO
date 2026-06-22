@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title">
+      BEM VINDO
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+ <div *ngIf="assistidos.length === 0 && !isLoading" class="ion-text-center ion-padding">
+    <p>Você ainda não cadastrou nenhum dependente.</p>
+    <p>Clique no botão '+' para começar.</p>
+  </div>
+
+    <div class="info-buttons">
+    <ion-button expand="block" class="btn-what-is" (click)="goTo('/sobre')">
+      <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+      O que é
+    </ion-button>
+
+    <ion-button expand="block" class="btn-warning" (click)="goTo('/alerta')">
+      <ion-icon name="warning-outline" slot="start"></ion-icon>
+      Sinais de Alerta
+    </ion-button>
+
+    <ion-button expand="block" class="btn-symbols" (click)="goTo('/simbolos')">
+      <ion-icon name="grid-outline" slot="start"></ion-icon>
+      Símbolos
+    </ion-button>
+
+    <ion-button expand="block" class="btn-rights" (click)="goTo('/direitos')">
+      <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
+      Direitos
+    </ion-button>
+  </div>
+
+  <div class="spacer"></div>
+  
+  <div *ngIf="assistidos.length > 0 && !isLoading" class="aviso">
+    <h4>Ficha e questionário dos Assistidos abaixo:</h4>
+  </div>
+
+  <!-- Lista de Assistidos -->
+  <ion-list *ngIf="assistidos.length > 0">
+    <ion-item *ngFor="let assistido of assistidos" [routerLink]="['/ficha-pessoal', assistido.id]" detail="true">
+      <ion-label>
+        <h2>{{ assistido.nome_completo }}</h2>
+        <p>{{ assistido.grau_parentesco }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  
+  <!-- Botão Flutuante para Adicionar Novo -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/cadastrar-assistidos">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
